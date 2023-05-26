@@ -10,11 +10,38 @@ export enum IncomingEvents {
     GAME_STARTED = 'GAME_STARTED',
     SEND_UNITS = 'GAME_STARTED',
     WON = 'WON',
-    LOST = 'LOST'
+    LOST = 'LOST',
 }
 
 export interface GameDetails {
-    gameId: string;
-    player1: string;
-    player2: string;
+    gameId: string
+    player1: string
+    player2: string
+}
+
+export interface PlanetData {
+    coords: Coordinates
+    fleet: number
+    fleetGenSpeed: number
+    id: number
+    ownerId: string
+    radius: number
+}
+
+export interface MapData {
+    w: number
+    h: number
+    planetArray: PlanetData[]
+}
+
+export interface GameState {
+    id: string
+    map: MapData
+    player1: string
+    player2: string
+}
+
+export interface Coordinates {
+    x: number
+    y: number
 }

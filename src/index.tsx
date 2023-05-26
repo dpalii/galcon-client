@@ -1,10 +1,9 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { socket } from './services/socket';
-import { SocketContext } from './contexts/SocketContext';
+import { SocketContext, socket } from './contexts/SocketContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
