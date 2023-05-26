@@ -1,3 +1,20 @@
+:root {
+  font-size: 16px;
+  --primary-color: #000;
+  --secondary-color: #777;
+  --bg-primary: #fff;
+  --bg-secondary: #ddd;
+  --text-success: #eee;
+  --bg-success: #090;
+  --bg-success-dark: #070;
+  --bg-success-darker: #050;
+  --text-default: #fff;
+  --bg-default: #33d;
+  --bg-default-dark: #22c;
+  --bg-default-darker: #11b;
+  --text-error: #fff;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

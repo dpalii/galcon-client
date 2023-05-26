@@ -1,0 +1,40 @@
+.game {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: flex-end;
+    background-color: var(--bg-secondary);
+}
+
+.game-id {
+    padding: 10px 15px;
+}
+
+.lobby {
+    color: var(--text-default);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    background-color: var(--bg-default);
+    font-weight: bold;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.lobby:hover {
+    background-color: var(--bg-default-dark);
+}
+
+.lobby:active {
+    background-color: var(--bg-default-darker);
+}
+
+.lobby:focus {
+    outline: none;
+}
