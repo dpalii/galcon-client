@@ -28,6 +28,10 @@ function App() {
         })
     }
 
+    const handleGameFinished = () => {
+        setGameId(null)
+    }
+
     useEffect(() => {
         socket.on(IncomingEvents.PLAYER_JOINED, (players: string) => {
             console.log(players)
@@ -42,7 +46,11 @@ function App() {
     return (
         <div className="App">
             {gameId ? (
-                <Game gameId={gameId} players={players} />
+                <Game
+                    gameId={gameId}
+                    players={players}
+                    gameFinished={handleGameFinished}
+                />
             ) : (
                 <ConnectModal
                     onConnect={handleConnect}

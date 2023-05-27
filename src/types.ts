@@ -8,7 +8,7 @@ export enum OutgoingEvents {
 export enum IncomingEvents {
     PLAYER_JOINED = 'PLAYER_JOINED',
     GAME_STARTED = 'GAME_STARTED',
-    SEND_UNITS = 'GAME_STARTED',
+    SEND_UNITS = 'SEND_UNITS',
     WON = 'WON',
     LOST = 'LOST',
 }
@@ -44,4 +44,12 @@ export interface GameState {
 export interface Coordinates {
     x: number
     y: number
+}
+
+export interface FleetData {
+    destinationPlanetId: number;
+    sourcePlanetId: number;
+    sender: string;
+    timeToReachInSec: number;
+    unitsAmount: number;
 }

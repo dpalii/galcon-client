@@ -4,14 +4,17 @@ import { SocketContext } from '../../contexts/SocketContext'
 import { GameState, IncomingEvents, MapData, OutgoingEvents } from '../../types'
 import { GameMap } from '../GameMap/GameMap'
 import { LobbyModal } from '../LobbyModal/LobbyModal'
+import { SummaryModal } from '../SummaryModal/SummaryModal'
 
 export interface GameProps {
     gameId: string
     players: string[]
+    gameFinished: () => void
 }
 
-export function Game({ gameId, players }: GameProps) {
+export function Game({ gameId, players, gameFinished }: GameProps) {
     const socket = useContext(SocketContext)
+    const [winner, setWinner] = useState<string | null>(null)
     const [gameStarted, setGameStarted] = useState(false)
     const [mapData, setMapData] = useState<MapData | null>(null)
     const [lobbyOpen, setLobbyOpen] = useState(false)
@@ -25,10 +28,12 @@ export function Game({ gameId, players }: GameProps) {
 
         socket.on(IncomingEvents.WON, (...args) => {
             console.log(args)
+            setWinner(socket.id === players[0] ? players[0] : players[1])
         })
 
         socket.on(IncomingEvents.LOST, (...args) => {
             console.log(args)
+            setWinner(socket.id !== players[0] ? players[0] : players[1])
         })
 
         return () => {
@@ -36,7 +41,7 @@ export function Game({ gameId, players }: GameProps) {
             socket.off(IncomingEvents.WON)
             socket.off(IncomingEvents.LOST)
         }
-    }, [])
+    }, [socket, players])
 
     const startGame = () => {
         if (!gameStarted) {
@@ -68,13 +73,19 @@ export function Game({ gameId, players }: GameProps) {
                     </button>
                 </header>
                 <div className='game-map'>
-                    {gameStarted && mapData && <GameMap mapData={mapData} />}
+                    {gameStarted && mapData && <GameMap mapData={mapData} gameId={gameId} />}
                 </div>
             </div>
             {lobbyOpen && (
                 <LobbyModal
                     players={players}
                     close={() => setLobbyOpen(false)}
+                />
+            )}
+            {winner && (
+                <SummaryModal
+                    winner={winner}
+                    close={() => gameFinished()}
                 />
             )}
         </>
