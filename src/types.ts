@@ -1,22 +1,25 @@
 export enum OutgoingEvents {
-    CREATE_NEW_GAME = 'CREATE_NEW_GAME',
-    JOIN_GAME = 'JOIN_GAME',
-    START_GAME = 'START_GAME',
-    SEND_UNITS = 'SEND_UNITS',
+    CREATE_NEW_GAME = "CREATE_NEW_GAME",
+    JOIN_GAME = "JOIN_GAME",
+    START_GAME = "START_GAME",
+    SEND_UNITS = "SEND_UNITS",
+    GET_LOBBY_LIST = "GET_LOBBY_LIST",
 }
 
 export enum IncomingEvents {
-    PLAYER_JOINED = 'PLAYER_JOINED',
-    GAME_STARTED = 'GAME_STARTED',
-    SEND_UNITS = 'SEND_UNITS',
-    WON = 'WON',
-    LOST = 'LOST',
+    PLAYER_JOINED = "PLAYER_JOINED",
+    GAME_STARTED = "GAME_STARTED",
+    SEND_UNITS = "SEND_UNITS",
+    GAME_END = "GAME_END",
+    SYNC = "SYNC",
+    GAME_CREATED = "GAME_CREATED",
+    WON = "WON",
+    LOST = "LOST",
 }
 
 export interface GameDetails {
     gameId: string
-    player1: string
-    player2: string
+    players: User[]
 }
 
 export interface PlanetData {
@@ -24,7 +27,7 @@ export interface PlanetData {
     fleet: number
     fleetGenSpeed: number
     id: number
-    ownerId: string
+    owner: User | null
     radius: number
 }
 
@@ -36,9 +39,8 @@ export interface MapData {
 
 export interface GameState {
     id: string
+    players: User[]
     map: MapData
-    player1: string
-    player2: string
 }
 
 export interface Coordinates {
@@ -52,4 +54,16 @@ export interface FleetData {
     sender: string;
     timeToReachInSec: number;
     unitsAmount: number;
+}
+
+export interface User {
+    id: string
+    name: string
+    color: string
+    isHost: boolean
+}
+
+export interface InputUser {
+    name: string;
+    color: string;
 }

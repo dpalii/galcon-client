@@ -1,6 +1,7 @@
 import {
     Coordinates,
     FleetData,
+    GameDetails,
     IncomingEvents,
     MapData,
     OutgoingEvents,
@@ -56,7 +57,7 @@ export function GameMap({ mapData, gameId }: GameMapProps) {
             return
         }
 
-        if (targetPlanet.ownerId === socket.id) {
+        if (targetPlanet.owner?.id === socket.id) {
             setSelected(targetPlanet)
             return
         }
@@ -75,8 +76,6 @@ export function GameMap({ mapData, gameId }: GameMapProps) {
     }
 
     useEffect(() => {
-        console.log('render!')
-
         const canvas = canvasRef.current
         if (!canvas) {
             return
@@ -89,20 +88,8 @@ export function GameMap({ mapData, gameId }: GameMapProps) {
         context.fillRect(0, 0, context.canvas.width, context.canvas.height)
 
         fleets.forEach((fleet) => {
-            if (!fleet.fleetData.sender) {
-                context.fillStyle = '#444444'
-            } else if (fleet.fleetData.sender === socket.id) {
-                context.fillStyle = '#0000ff'
-            } else {
-                context.fillStyle = '#ff0000'
-            }
+            context.fillStyle = fleet.startPlanet.owner?.color || '#444444'
             const { x, y } = fleet.position
-            
-            // context.strokeStyle = '#ffffff'
-            // context.beginPath();
-            // context.moveTo(fleet.startPlanet.coords.x, fleet.startPlanet.coords.y);
-            // context.lineTo(fleet.targetPlanet.coords.x, fleet.targetPlanet.coords.y);
-            // context.stroke();
 
             const scale = 10
             const vectorX = (fleet.targetPlanet.coords.x - fleet.startPlanet.coords.x)
@@ -123,13 +110,7 @@ export function GameMap({ mapData, gameId }: GameMapProps) {
         })
 
         mapData.planetArray.forEach((planet) => {
-            if (!planet.ownerId) {
-                context.fillStyle = '#444444'
-            } else if (planet.ownerId === socket.id) {
-                context.fillStyle = '#0000ff'
-            } else {
-                context.fillStyle = '#ff0000'
-            }
+            context.fillStyle = planet.owner?.color || '#444444'
             const { x, y } = planet.coords
             const r = planet.radius
             const fontSize = Math.floor(r / 2)

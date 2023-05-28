@@ -1,9 +1,10 @@
 import { useContext } from 'react'
 import './SummaryModal.css'
 import { SocketContext } from '../../contexts/SocketContext'
+import { User } from '../../types'
 
 export interface SummaryModalProps {
-    winner: string
+    winner: User
     close: () => void
 }
 
@@ -13,9 +14,9 @@ export function SummaryModal({ winner, close }: SummaryModalProps) {
         <div className="backdrop" onClick={() => close()}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
                 <h2 className="heading">
-                    {socket.id === winner ? 'YOU WON' : 'YOU LOST'}
+                    {socket.id === winner.id ? 'YOU WON' : 'YOU LOST'}
                 </h2>
-                <button className="close-btn" onClick={() => close()}>
+                <button className="btn" onClick={() => close()}>
                     CLOSE
                 </button>
             </div>

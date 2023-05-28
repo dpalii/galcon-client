@@ -1,7 +1,8 @@
+import { User } from '../../types'
 import './LobbyModal.css'
 
 export interface LobbyModalProps {
-    players: string[]
+    players: User[]
     close: () => void
 }
 
@@ -10,15 +11,13 @@ export function LobbyModal({ players, close }: LobbyModalProps) {
         <div className="backdrop" onClick={() => close()}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
                 <h2 className="heading">PLAYERS:</h2>
-                <div className="player-entry">
-                    <b>Player 1: </b>
-                    {players[0]}
-                </div>
-                <div className="player-entry">
-                    <b>Player 2: </b>
-                    {players[1] || 'not joined'}
-                </div>
-                <button className="close-btn" onClick={() => close()}>
+                {players.map((player) => (
+                    <div key={player.id} className="player-entry">
+                        <span className='player-color' style={{backgroundColor: player.color}}></span>
+                        <b>{player.name} {player.isHost ? '(host)' : ''}</b>
+                    </div>
+                ))}
+                <button className="btn w-100" onClick={() => close()}>
                     CLOSE
                 </button>
             </div>

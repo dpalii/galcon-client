@@ -3,13 +3,10 @@ import { FormEvent, useState } from 'react'
 
 export interface ConnectModalProps {
     onConnect: (gameId: string) => void
-    onCreateNewGame: () => void
+    onClose: () => void
 }
 
-export function ConnectModal({
-    onConnect,
-    onCreateNewGame,
-}: ConnectModalProps) {
+export function ConnectModal({ onConnect, onClose }: ConnectModalProps) {
     const [gameId, setGameId] = useState('')
 
     const onClick = (e: FormEvent) => {
@@ -19,9 +16,9 @@ export function ConnectModal({
 
     return (
         <div className="backdrop">
-            <div className="form">
-                <form>
-                    <legend>ENTER GAME ID:</legend>
+            <div className="modal">
+                <h2 className="heading">ENTER GAME ID:</h2>
+                <form className='connect-form'>
                     <input
                         value={gameId}
                         onChange={(e) => setGameId(e.target.value)}
@@ -30,8 +27,8 @@ export function ConnectModal({
                         JOIN
                     </button>
                 </form>
-                <button className="create-new" onClick={onCreateNewGame}>
-                    CREATE NEW GAME
+                <button className="btn w-100" onClick={onClose}>
+                    BACK
                 </button>
             </div>
         </div>

@@ -1,31 +1,60 @@
 import './App.css'
 import { ConnectModal } from './components/ConnectModal/ConnectModal'
+import { UserModal } from './components/UserModal/UserModal'
 import { Game } from './components/Game/Game'
 import { useContext, useEffect, useState } from 'react'
 import { SocketContext } from './contexts/SocketContext'
-import { GameDetails, IncomingEvents, OutgoingEvents } from './types'
+import { GameDetails, IncomingEvents, InputUser, OutgoingEvents, User } from './types'
 
 function App() {
     const socket = useContext(SocketContext)
+    const [user, setUser] = useState<InputUser>({
+        name: '',
+        color: '#0000ff'
+    })
+    const [lobbyListOpen, setLobbyListOpen] = useState<boolean>(false)
+    const [joinByCodeOpen, setJoinByCodeOpen] = useState<boolean>(false)
     const [gameId, setGameId] = useState<string | null>(null)
-    const [players, setPlayers] = useState<string[]>([])
+    const [players, setPlayers] = useState<User[]>([])
     const handleConnect = (gameId: string) => {
         socket.emit(
             OutgoingEvents.JOIN_GAME,
+            user,
             gameId,
             (response: GameDetails) => {
                 console.log(response.gameId)
                 setGameId(response.gameId)
-                setPlayers([response.player1, response.player2])
+                setPlayers(response.players)
+                setJoinByCodeOpen(false)
             }
         )
     }
-    const handleNewGame = () => {
-        socket.emit(OutgoingEvents.CREATE_NEW_GAME, (gameId: string) => {
+    const handleNewGame = (inputUser: InputUser) => {
+        socket.emit(OutgoingEvents.CREATE_NEW_GAME, inputUser, (gameId: string) => {
             console.log(gameId)
+            const newUser = {
+                ...inputUser,
+                id: socket.id,
+                isHost: true
+            }
+            setUser(inputUser)
             setGameId(gameId)
-            setPlayers([socket.id])
+            setPlayers([newUser])
+            setJoinByCodeOpen(false)
+            setLobbyListOpen(false)
         })
+    }
+
+    const handleJoinByCode = (inputUser: InputUser) => {
+        setUser(inputUser)
+        setJoinByCodeOpen(true)
+        setLobbyListOpen(false)
+    }
+
+    const handleOpenLobbyList = (inputUser: InputUser) => {
+        setUser(inputUser)
+        setJoinByCodeOpen(false)
+        setLobbyListOpen(true)
     }
 
     const handleGameFinished = () => {
@@ -33,30 +62,49 @@ function App() {
     }
 
     useEffect(() => {
-        socket.on(IncomingEvents.PLAYER_JOINED, (players: string) => {
+        socket.on(IncomingEvents.PLAYER_JOINED, (player: string) => {
             console.log(players)
-            setPlayers([socket.id, players])
+            setPlayers([...players, {
+                id: player,
+                isHost: false,
+                color: '#ff0000',
+                name: `Player ${players.length}`
+            }])
         })
 
         return () => {
             socket.off(IncomingEvents.PLAYER_JOINED)
         }
-    }, [])
+    }, [socket, players])
+
+    const showComponent = () => {
+        if (gameId) {
+            return (<Game
+                gameId={gameId}
+                players={players}
+                gameFinished={handleGameFinished}
+            />)
+        }
+        if (joinByCodeOpen) {
+            return (<ConnectModal
+                onConnect={handleConnect}
+                onClose={() => setJoinByCodeOpen(false)}
+            />)
+        }
+        if (lobbyListOpen) {
+
+        }
+        return (<UserModal 
+            inputUser={user}
+            joinByCode={(inputUser) => handleJoinByCode(inputUser)}
+            openLobbyList={(inputUser) => handleOpenLobbyList(inputUser)}
+            createGame={(inputUser) => handleNewGame(inputUser)}
+        />)
+    }
 
     return (
         <div className="App">
-            {gameId ? (
-                <Game
-                    gameId={gameId}
-                    players={players}
-                    gameFinished={handleGameFinished}
-                />
-            ) : (
-                <ConnectModal
-                    onConnect={handleConnect}
-                    onCreateNewGame={handleNewGame}
-                />
-            )}
+            {showComponent()}
         </div>
     )
 }

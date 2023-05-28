@@ -1,0 +1,27 @@
+.error {
+    color: #b00
+}
+
+#name {
+    flex: 1;
+    border: none;
+    background-color: var(--bg-secondary);
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+#name:focus {
+    outline: none;
+}
+
+.modal label {
+    width: 50px;
+    padding-right: 10px;
+    text-align: left;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}

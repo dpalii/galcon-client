@@ -1,45 +1,19 @@
-.backdrop {
-    top: 0;
-    left: 0;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--bg-primary);
-    border-radius: 8px;
-    padding: 20px;
-}
-
-.form form {
+.connect-form {
     margin-bottom: 20px;
 }
 
-.form legend {
-    padding-bottom: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.form input {
+.connect-form input {
     border: none;
     background-color: var(--bg-secondary);
     padding: 10px 15px;
     border-radius: 4px 0 0 4px;
 }
 
-.form input:focus {
+.connect-form input:focus {
     outline: none;
 }
 
-.form form button {
+.connect-form button {
     color: var(--text-success);
     border: none;
     border-radius: 0 4px 4px 0;
@@ -50,37 +24,14 @@
     cursor: pointer;
 }
 
-.form form button:hover {
+.connect-form button:hover {
     background-color: var(--bg-success-dark);
 }
 
-.form form button:active {
+.connect-form button:active {
     background-color: var(--bg-success-darker);
 }
 
-.form form button:focus {
-    outline: none;
-}
-
-.create-new {
-    color: var(--text-default);
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    background-color: var(--bg-default);
-    font-weight: bold;
-    transition: background-color 0.3s;
-    cursor: pointer;
-}
-
-.create-new:hover {
-    background-color: var(--bg-default-dark);
-}
-
-.create-new:active {
-    background-color: var(--bg-default-darker);
-}
-
-.create-new:focus {
+.connect-form button:focus {
     outline: none;
 }
