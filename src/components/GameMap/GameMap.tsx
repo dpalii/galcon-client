@@ -30,6 +30,27 @@ function getTimeInSec() {
     return new Date().getTime() / 1000
 }
 
+function invertColor(hex: string): string {
+    if (hex.indexOf('#') === 0) {
+        hex = hex.slice(1);
+    }
+    // convert 3-digit hex to 6-digits.
+    if (hex.length === 3) {
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    if (hex.length !== 6) {
+        throw new Error('Invalid HEX color.');
+    }
+    var r = parseInt(hex.slice(0, 2), 16),
+        g = parseInt(hex.slice(2, 4), 16),
+        b = parseInt(hex.slice(4, 6), 16);
+        
+    // https://stackoverflow.com/a/3943023/112731
+    return (r * 0.299 + g * 0.587 + b * 0.114) > 186
+        ? '#000000'
+        : '#FFFFFF';
+}
+
 export function GameMap({ mapData, gameId }: GameMapProps) {
     const [fleets, setFleets] = useState<Fleet[]>([])
     const [selected, setSelected] = useState<PlanetData | null>(null)
@@ -110,7 +131,8 @@ export function GameMap({ mapData, gameId }: GameMapProps) {
         })
 
         mapData.planetArray.forEach((planet) => {
-            context.fillStyle = planet.owner?.color || '#444444'
+            const planetColor = planet.owner?.color || '#444444'
+            context.fillStyle = planetColor
             const { x, y } = planet.coords
             const r = planet.radius
             const fontSize = Math.floor(r / 2)
@@ -119,8 +141,9 @@ export function GameMap({ mapData, gameId }: GameMapProps) {
             context.fill()
             context.font = `${fontSize}px sans`
             context.textAlign = 'center'
-            context.fillStyle = '#ffffff'
-            context.fillText(`${planet.fleet}`, x, y + fontSize / 2)
+            context.fillStyle = invertColor(planetColor)
+            context.fillText(`ID: ${planet.id}`, x, y)
+            context.fillText(`${planet.fleet}`, x, y + fontSize)
         })
 
         if (selected) {
@@ -136,7 +159,9 @@ export function GameMap({ mapData, gameId }: GameMapProps) {
     }, [mapData, selected, socket, fleets])
 
     useEffect(() => {
-        socket.on(IncomingEvents.SEND_UNITS, (unitData: FleetData) => {
+        const onSendUnits = (unitData: FleetData) => {
+            console.log(unitData);
+            
             const startPlanet = mapData.planetArray.find(({id}) => id === unitData.sourcePlanetId)
             const targetPlanet = mapData.planetArray.find(({id}) => id === unitData.destinationPlanetId)
 
@@ -151,10 +176,12 @@ export function GameMap({ mapData, gameId }: GameMapProps) {
                 targetPlanet
             }
             setFleets([...fleets, newFleet])
-        })
+        }
+
+        socket.on(IncomingEvents.SEND_UNITS, onSendUnits)
 
         return () => {
-            socket.off(IncomingEvents.SEND_UNITS)
+            socket.off(IncomingEvents.SEND_UNITS, onSendUnits)
         }
     }, [socket, fleets, mapData])
 

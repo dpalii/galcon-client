@@ -55,6 +55,7 @@ code {
     padding-bottom: 20px;
     font-size: 1.2rem;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .btn {
@@ -68,15 +69,24 @@ code {
     cursor: pointer;
 }
 
-.btn:hover {
+.btn-sm {
+    padding: 5px 10px;
+}
+
+.btn:disabled {
+    background-color: var(--bg-disabled);
+    cursor: default;
+}
+
+.btn:hover:not(:disabled) {
     background-color: var(--bg-default-dark);
 }
 
-.btn:active {
+.btn:active:not(:disabled) {
     background-color: var(--bg-default-darker);
 }
 
-.btn:focus {
+.btn:focus:not(:disabled) {
     outline: none;
 }
 

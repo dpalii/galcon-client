@@ -5,6 +5,7 @@ import { Game } from './components/Game/Game'
 import { useContext, useEffect, useState } from 'react'
 import { SocketContext } from './contexts/SocketContext'
 import { GameDetails, IncomingEvents, InputUser, OutgoingEvents, User } from './types'
+import { LobbyList } from './components/LobbiesList/LobbyList'
 
 function App() {
     const socket = useContext(SocketContext)
@@ -22,7 +23,6 @@ function App() {
             user,
             gameId,
             (response: GameDetails) => {
-                console.log(response.gameId)
                 setGameId(response.gameId)
                 setPlayers(response.players)
                 setJoinByCodeOpen(false)
@@ -31,7 +31,6 @@ function App() {
     }
     const handleNewGame = (inputUser: InputUser) => {
         socket.emit(OutgoingEvents.CREATE_NEW_GAME, inputUser, (gameId: string) => {
-            console.log(gameId)
             const newUser = {
                 ...inputUser,
                 id: socket.id,
@@ -62,18 +61,13 @@ function App() {
     }
 
     useEffect(() => {
-        socket.on(IncomingEvents.PLAYER_JOINED, (player: string) => {
-            console.log(players)
-            setPlayers([...players, {
-                id: player,
-                isHost: false,
-                color: '#ff0000',
-                name: `Player ${players.length}`
-            }])
-        })
+        const onPlayerJoined = (player: User) => {
+            setPlayers([...players, player])
+        }
+        socket.on(IncomingEvents.PLAYER_JOINED, onPlayerJoined)
 
         return () => {
-            socket.off(IncomingEvents.PLAYER_JOINED)
+            socket.off(IncomingEvents.PLAYER_JOINED, onPlayerJoined)
         }
     }, [socket, players])
 
@@ -92,7 +86,10 @@ function App() {
             />)
         }
         if (lobbyListOpen) {
-
+            return (<LobbyList
+                close={() => setLobbyListOpen(false)}
+                joinLobby={handleConnect}
+            />)
         }
         return (<UserModal 
             inputUser={user}

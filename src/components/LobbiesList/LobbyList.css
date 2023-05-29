@@ -1,0 +1,26 @@
+.lobbies {
+    border: 1px solid var(--primary-color);
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.lobbies td,
+.lobbies th {
+    border: 1px solid var(--primary-color);
+    padding: 3px;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.lobbies-wrapper {
+    height: 200px;
+}
+
+.page {
+    padding: 5px 10px;
+}

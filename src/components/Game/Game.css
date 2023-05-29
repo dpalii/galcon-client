@@ -21,35 +21,10 @@
     background-color: var(--bg-secondary);
 }
 
-.game-id {
-    padding: 10px 0;
-}
-
-.button {
-    color: var(--text-default);
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    background-color: var(--bg-default);
-    font-weight: bold;
-    transition: background-color 0.3s;
-    cursor: pointer;
+.header .btn {
     margin-left: 10px;
 }
 
-.button:disabled {
-    background-color: var(--bg-disabled);
-    cursor: default;
-}
-
-.button:hover:not(:disabled) {
-    background-color: var(--bg-default-dark);
-}
-
-.button:active:not(:disabled) {
-    background-color: var(--bg-default-darker);
-}
-
-.button:focus:not(:disabled) {
-    outline: none;
+.game-id {
+    padding: 10px 0;
 }

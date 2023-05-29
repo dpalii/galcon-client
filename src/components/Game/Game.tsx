@@ -20,23 +20,26 @@ export function Game({ gameId, players, gameFinished }: GameProps) {
     const [lobbyOpen, setLobbyOpen] = useState(false)
 
     useEffect(() => {
-        socket.on(IncomingEvents.GAME_STARTED, (response: GameState) => {
-            console.log(response)
+        const onGameStarted = (response: GameState) => {
             setMapData(response.map)
             setGameStarted(true)
-        })
+        }
+        socket.on(IncomingEvents.GAME_STARTED, onGameStarted)
 
-        socket.on(IncomingEvents.GAME_END, (winner: User, players: User[]) => {
+        const onGameEnd = (winner: User, players: User[]) => {
             setWinner(winner)
-        })
+        }
+        socket.on(IncomingEvents.GAME_END, onGameEnd)
 
-        socket.on(IncomingEvents.SYNC, (response: GameState) => {
+        const onSync = (response: GameState) => {
             setMapData(response.map)
-        })
+        }
+        socket.on(IncomingEvents.SYNC, onSync)
 
         return () => {
-            socket.off(IncomingEvents.GAME_STARTED)
-            socket.off(IncomingEvents.WON)
+            socket.off(IncomingEvents.GAME_STARTED, onGameStarted)
+            socket.off(IncomingEvents.GAME_END, onGameEnd)
+            socket.off(IncomingEvents.SYNC, onSync)
         }
     }, [socket, players])
 
@@ -56,14 +59,14 @@ export function Game({ gameId, players, gameFinished }: GameProps) {
                         {gameId}
                     </div>
                     <button
-                        className="button"
+                        className="btn"
                         disabled={gameStarted || players.length < 2}
-                        onClick={() => startGame()}
+                        onClick={startGame}
                     >
                         START GAME
                     </button>
                     <button
-                        className="button"
+                        className="btn"
                         onClick={() => setLobbyOpen(true)}
                     >
                         LOBBY ({players.length})
@@ -82,7 +85,7 @@ export function Game({ gameId, players, gameFinished }: GameProps) {
             {winner && (
                 <SummaryModal
                     winner={winner}
-                    close={() => gameFinished()}
+                    close={gameFinished}
                 />
             )}
         </>

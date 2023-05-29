@@ -87,7 +87,7 @@ export function UserModal({ inputUser, createGame, joinByCode, openLobbyList }: 
                     JOIN BY CODE
                 </button>
                 <button
-                    className="btn mb w-100"
+                    className="btn w-100"
                     onClick={() => handleOpenLobbyList()}
                 >
                     OPEN LOBBY LIST

@@ -67,3 +67,8 @@ export interface InputUser {
     name: string;
     color: string;
 }
+
+export interface Lobby {
+    id: string,
+    usersAmount: number
+}
