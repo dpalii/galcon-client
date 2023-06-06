@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project needs backend service to operate correctly
+
+1) clone [https://github.com/0rqheus/galcon](https://github.com/0rqheus/galcon) to your local machine
+2) start the server
+3) open client folder
+4) change the defaul react port to witch you like to not run on servers port
+5) install npm globally
+6) open terminal in client folder
+7) type `npm i` to install dependencies
 
 ## Available Scripts
 
@@ -39,8 +47,5 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Gameplay preview
+<img width="529" alt="Screenshot 2023-06-06 at 20 09 37" src="https://github.com/dpalii/galacon-client/assets/47571050/7eaa9776-e101-4787-9107-e29575fd1269">
