@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GameMap> should render component 1`] = `
+<div>
+  <canvas
+    class="canvas"
+    height="90"
+    width="45"
+  />
+</div>
+`;

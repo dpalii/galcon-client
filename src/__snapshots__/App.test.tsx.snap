@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ConnectModal> should render component 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <div
+      class="backdrop"
+    >
+      <div
+        class="modal"
+      >
+        <h2
+          class="heading"
+        >
+          USER CONFIGURATION
+        </h2>
+        <form>
+          <div
+            class="input-wrapper"
+          >
+            <label
+              for="name"
+            >
+              Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              value=""
+            />
+          </div>
+          <div
+            class="input-wrapper"
+          >
+            <label
+              for="color"
+            >
+              Color
+            </label>
+            <input
+              id="color"
+              name="color"
+              type="color"
+              value="#0000ff"
+            />
+          </div>
+        </form>
+        <p
+          class="error"
+        />
+        <button
+          class="btn mb w-100"
+          id="create-button"
+        >
+          CREATE GAME
+        </button>
+        <button
+          class="btn mb w-100"
+          id="join-button"
+        >
+          JOIN BY CODE
+        </button>
+        <button
+          class="btn w-100"
+          id="open-button"
+        >
+          OPEN LOBBY LIST
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

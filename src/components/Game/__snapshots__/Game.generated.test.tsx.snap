@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Game> should render component 1`] = `
+<div>
+  <div
+    class="game"
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="game-id"
+      >
+        <b>
+          Game ID: 
+        </b>
+        /* string */
+      </div>
+      <button
+        class="btn"
+        disabled=""
+        id="start-game"
+      >
+        START GAME
+      </button>
+      <button
+        class="btn"
+        id="lobby"
+      >
+        LOBBY (
+        3
+        )
+      </button>
+    </header>
+    <div
+      class="game-map"
+    />
+  </div>
+  <div
+    class="backdrop"
+  >
+    <div
+      class="modal"
+    >
+      <h2
+        class="heading"
+      >
+        PLAYERS:
+      </h2>
+      <div
+        class="player-entry"
+      >
+        <span
+          class="player-color"
+          style="background-color: rgb(255, 255, 255);"
+        />
+        <b>
+          name1
+           
+        </b>
+      </div>
+      <div
+        class="player-entry"
+      >
+        <span
+          class="player-color"
+          style="background-color: rgb(0, 0, 0);"
+        />
+        <b>
+          name2
+           
+          (host)
+        </b>
+      </div>
+      <div
+        class="player-entry"
+      >
+        <span
+          class="player-color"
+          style="background-color: rgb(255, 240, 0);"
+        />
+        <b>
+          name3
+           
+        </b>
+      </div>
+      <button
+        class="btn w-100"
+      >
+        CLOSE
+      </button>
+    </div>
+  </div>
+</div>
+`;

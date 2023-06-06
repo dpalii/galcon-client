@@ -75,18 +75,21 @@ export function UserModal({ inputUser, createGame, joinByCode, openLobbyList }: 
                 </form>
                 <p className='error'>{error}</p>
                 <button
+                    id = "create-button"
                     className="btn mb w-100"
                     onClick={() => handleCreateGame()}
                 >
                     CREATE GAME
                 </button>
                 <button
+                    id = "join-button"
                     className="btn mb w-100"
                     onClick={() => handleJoinByCode()}
                 >
                     JOIN BY CODE
                 </button>
                 <button
+                    id = "open-button"
                     className="btn w-100"
                     onClick={() => handleOpenLobbyList()}
                 >

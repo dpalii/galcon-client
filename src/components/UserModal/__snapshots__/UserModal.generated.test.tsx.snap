@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserModal empty user 1`] = `
+<div>
+  <div
+    class="backdrop"
+  >
+    <div
+      class="modal"
+    >
+      <h2
+        class="heading"
+      >
+        USER CONFIGURATION
+      </h2>
+      <form>
+        <div
+          class="input-wrapper"
+        >
+          <label
+            for="name"
+          >
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            value=""
+          />
+        </div>
+        <div
+          class="input-wrapper"
+        >
+          <label
+            for="color"
+          >
+            Color
+          </label>
+          <input
+            id="color"
+            name="color"
+            type="color"
+            value=""
+          />
+        </div>
+      </form>
+      <p
+        class="error"
+      >
+        Please fill out the fields
+      </p>
+      <button
+        class="btn mb w-100"
+        id="create-button"
+      >
+        CREATE GAME
+      </button>
+      <button
+        class="btn mb w-100"
+        id="join-button"
+      >
+        JOIN BY CODE
+      </button>
+      <button
+        class="btn w-100"
+        id="open-button"
+      >
+        OPEN LOBBY LIST
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`UserModal events 1`] = `
+<div>
+  <div
+    class="backdrop"
+  >
+    <div
+      class="modal"
+    >
+      <h2
+        class="heading"
+      >
+        USER CONFIGURATION
+      </h2>
+      <form>
+        <div
+          class="input-wrapper"
+        >
+          <label
+            for="name"
+          >
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            value="name"
+          />
+        </div>
+        <div
+          class="input-wrapper"
+        >
+          <label
+            for="color"
+          >
+            Color
+          </label>
+          <input
+            id="color"
+            name="color"
+            type="color"
+            value="#000000"
+          />
+        </div>
+      </form>
+      <p
+        class="error"
+      />
+      <button
+        class="btn mb w-100"
+        id="create-button"
+      >
+        CREATE GAME
+      </button>
+      <button
+        class="btn mb w-100"
+        id="join-button"
+      >
+        JOIN BY CODE
+      </button>
+      <button
+        class="btn w-100"
+        id="open-button"
+      >
+        OPEN LOBBY LIST
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`UserModal should render component 1`] = `
+<div>
+  <div
+    class="backdrop"
+  >
+    <div
+      class="modal"
+    >
+      <h2
+        class="heading"
+      >
+        USER CONFIGURATION
+      </h2>
+      <form>
+        <div
+          class="input-wrapper"
+        >
+          <label
+            for="name"
+          >
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            value=""
+          />
+        </div>
+        <div
+          class="input-wrapper"
+        >
+          <label
+            for="color"
+          >
+            Color
+          </label>
+          <input
+            id="color"
+            name="color"
+            type="color"
+            value=""
+          />
+        </div>
+      </form>
+      <p
+        class="error"
+      />
+      <button
+        class="btn mb w-100"
+        id="create-button"
+      >
+        CREATE GAME
+      </button>
+      <button
+        class="btn mb w-100"
+        id="join-button"
+      >
+        JOIN BY CODE
+      </button>
+      <button
+        class="btn w-100"
+        id="open-button"
+      >
+        OPEN LOBBY LIST
+      </button>
+    </div>
+  </div>
+</div>
+`;

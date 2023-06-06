@@ -1,10 +1,11 @@
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/no-unnecessary-act */
 import { render } from "react-dom";
+import { fireEvent} from '@testing-library/react'
 
 import { unmountComponentAtNode } from "react-dom";
 import { act } from 'react-dom/test-utils';
-import App from './App';
+import { LobbyList } from "../../../src/components/LobbiesList/LobbyList";
 
 let container: any = null;
 
@@ -21,13 +22,16 @@ afterEach(() => {
   container = null;
 });
 
-describe('<ConnectModal>', () => {
+describe('<LobbyList>', () => {
   it('should render component', () => {
     act(() => {
-      render(<App />, container);
+      render(<LobbyList  
+        joinLobby={(gameId: string) => {}}  
+        close={() => {}} 
+      />, container);
     });
-    
+    container.querySelector('.backdrop').dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    container.querySelector('.btn').dispatchEvent(new MouseEvent("click", { bubbles: true }));
     expect(container).toMatchSnapshot();
   })
 });
-

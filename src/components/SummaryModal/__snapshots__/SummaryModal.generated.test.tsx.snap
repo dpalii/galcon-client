@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SummaryModal> should render component 1`] = `
+<div>
+  <div
+    class="backdrop"
+  >
+    <div
+      class="modal"
+    >
+      <h2
+        class="heading"
+      >
+        winner WON
+      </h2>
+      <button
+        class="btn"
+      >
+        CLOSE
+      </button>
+    </div>
+  </div>
+</div>
+`;

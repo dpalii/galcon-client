@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "src/App.test.tsx", "tests/components/UserModal/UserModal.generated.test.tsx", "tests/components/SummaryModal/SummaryModal.generated.test.tsx", "tests/components/LobbyModal/LobbyModal.generated.test.tsx", "tests/components/LobbiesList/LobbyList.generated.test.tsx", "tests/components/GameMap/__snapshots__/GameMap.generated.test.tsx", "tests/components/Game/__snapshots__/Game.generated.test.tsx", "tests/components/ConnectModal/__snapshots__/ConnectModal.generated.test.tsx"  ]
 }

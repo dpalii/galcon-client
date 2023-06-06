@@ -1,10 +1,11 @@
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/no-unnecessary-act */
+import { fireEvent } from "@testing-library/react";
 import { render } from "react-dom";
 
 import { unmountComponentAtNode } from "react-dom";
 import { act } from 'react-dom/test-utils';
-import App from './App';
+import { ConnectModal } from '../../../src/components/ConnectModal/ConnectModal';
 
 let container: any = null;
 
@@ -24,10 +25,14 @@ afterEach(() => {
 describe('<ConnectModal>', () => {
   it('should render component', () => {
     act(() => {
-      render(<App />, container);
+      render(<ConnectModal  
+        onConnect={(gameId: string) => {}}  
+        onClose={ () => {}} 
+      />, container);
     });
-    
+    container.querySelector('.btn').dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    container.querySelector('#submit').dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.change(container.querySelector('input'), { target: { value: '738gf87f...' } });
     expect(container).toMatchSnapshot();
   })
 });
-

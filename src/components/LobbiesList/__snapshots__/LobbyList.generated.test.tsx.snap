@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LobbyList> should render component 1`] = `
+<div>
+  <div
+    class="backdrop"
+  >
+    <div
+      class="modal"
+    >
+      <h2
+        class="heading"
+      >
+        LOBBIES:
+      </h2>
+      <div
+        class="lobbies-wrapper"
+      >
+        <table
+          class="lobbies"
+        >
+          <thead>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                User Amount
+              </th>
+              <th />
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </div>
+      <div
+        class="pagination"
+      >
+        <button
+          class="btn btn-sm"
+          disabled=""
+        >
+          &lt;
+        </button>
+        <div
+          class="page"
+        >
+          1
+        </div>
+        <button
+          class="btn btn-sm"
+          disabled=""
+        >
+          &gt;
+        </button>
+      </div>
+      <button
+        class="btn w-100"
+      >
+        CLOSE
+      </button>
+    </div>
+  </div>
+</div>
+`;

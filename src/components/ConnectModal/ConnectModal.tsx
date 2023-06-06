@@ -23,7 +23,7 @@ export function ConnectModal({ onConnect, onClose }: ConnectModalProps) {
                         value={gameId}
                         onChange={(e) => setGameId(e.target.value)}
                     />
-                    <button type="submit" onClick={onClick}>
+                    <button id="submit" type="submit" onClick={onClick}>
                         JOIN
                     </button>
                 </form>

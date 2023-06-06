@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LobbyModal> should render component 1`] = `
+<div>
+  <div
+    class="backdrop"
+  >
+    <div
+      class="modal"
+    >
+      <h2
+        class="heading"
+      >
+        PLAYERS:
+      </h2>
+      <div
+        class="player-entry"
+      >
+        <span
+          class="player-color"
+          style="background-color: rgb(0, 0, 0);"
+        />
+        <b>
+          string
+           
+          (host)
+        </b>
+      </div>
+      <div
+        class="player-entry"
+      >
+        <span
+          class="player-color"
+          style="background-color: rgb(255, 255, 255);"
+        />
+        <b>
+          string2
+           
+        </b>
+      </div>
+      <button
+        class="btn w-100"
+      >
+        CLOSE
+      </button>
+    </div>
+  </div>
+</div>
+`;

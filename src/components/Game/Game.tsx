@@ -59,6 +59,7 @@ export function Game({ gameId, players, gameFinished }: GameProps) {
                         {gameId}
                     </div>
                     <button
+                        id="start-game"
                         className="btn"
                         disabled={gameStarted || players.length < 2}
                         onClick={startGame}
@@ -66,6 +67,7 @@ export function Game({ gameId, players, gameFinished }: GameProps) {
                         START GAME
                     </button>
                     <button
+                        id="lobby"
                         className="btn"
                         onClick={() => setLobbyOpen(true)}
                     >

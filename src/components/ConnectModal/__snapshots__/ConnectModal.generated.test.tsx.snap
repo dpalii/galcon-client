@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ConnectModal> should render component 1`] = `
+<div>
+  <div
+    class="backdrop"
+  >
+    <div
+      class="modal"
+    >
+      <h2
+        class="heading"
+      >
+        ENTER GAME ID:
+      </h2>
+      <form
+        class="connect-form"
+      >
+        <input
+          value="738gf87f..."
+        />
+        <button
+          id="submit"
+          type="submit"
+        >
+          JOIN
+        </button>
+      </form>
+      <button
+        class="btn w-100"
+      >
+        BACK
+      </button>
+    </div>
+  </div>
+</div>
+`;
