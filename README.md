@@ -1,4 +1,12 @@
-# Setup
+# Galcon client
+Galacon client - client for galcon game
+
+## Description
+Galacon client is written on React galcon froend part that can be used alongside with compatible server application.\
+
+The api interfaces can be found at [https://github.com/0rqheus/galcon#readme](https://github.com/0rqheus/galcon#readme).
+
+## Setup
 
 This project needs backend service to operate correctly
 
@@ -10,17 +18,16 @@ This project needs backend service to operate correctly
 6) open terminal in client folder
 7) type `npm i` to install dependencies
 
-## Available Scripts
+## Run app
 
-In the project directory, you can run:
+After setup is complete navigate to project folder and run following command:\
+`npm start`
 
-### `npm start`
+It runs the app in the development mode.\
+After these commands a tab with game will be opened in your browser.\
+You can access it directly by going to [http://localhost:3006](http://localhost:3006)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Other Scripts
 
 ### `npm test`
 
@@ -47,5 +54,18 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+### `npm run lint`
+
+Run to check whether code satisfies eslint config
+The default config is extended from:
+
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "airbnb", "airbnb/hooks"
+
+
 ## Gameplay preview
 <img width="529" alt="Screenshot 2023-06-06 at 20 09 37" src="https://github.com/dpalii/galacon-client/assets/47571050/7eaa9776-e101-4787-9107-e29575fd1269">
+
+A picture with the game for 2 players.
