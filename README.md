@@ -2,7 +2,7 @@
 Galacon client - client for galcon game
 
 ## Description
-Galacon client is written on React galcon froend part that can be used alongside with compatible server application.\
+The Galacon client is a React-based frontend component that seamlessly integrates with a compatible server application. It provides users with an intuitive and modern user interface to interact with the Galacon system. The client-server communication enables efficient data exchange and real-time updates, enhancing the overall event management experience.
 
 The api interfaces can be found at [https://github.com/0rqheus/galcon#readme](https://github.com/0rqheus/galcon#readme).
 
