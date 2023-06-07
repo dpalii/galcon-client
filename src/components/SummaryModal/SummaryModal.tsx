@@ -1,5 +1,6 @@
-import './SummaryModal.css'
-import { User } from '../../types'
+import React from 'react';
+import './SummaryModal.css';
+import { User } from '../../types';
 
 export interface SummaryModalProps {
     winner: User
@@ -7,16 +8,16 @@ export interface SummaryModalProps {
 }
 
 export function SummaryModal({ winner, close }: SummaryModalProps) {
-    return (
-        <div className="backdrop" onClick={() => close()}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
-                <h2 className="heading">
-                    {`${winner.name} WON`}
-                </h2>
-                <button className="btn" onClick={() => close()}>
-                    CLOSE
-                </button>
-            </div>
-        </div>
-    )
+  return (
+    <div className="backdrop" onClick={() => close()}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <h2 className="heading">
+          {`${winner.name} WON`}
+        </h2>
+        <button type="button" className="btn" onClick={() => close()}>
+          CLOSE
+        </button>
+      </div>
+    </div>
+  );
 }

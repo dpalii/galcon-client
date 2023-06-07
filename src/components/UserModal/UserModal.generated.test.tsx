@@ -1,20 +1,16 @@
-/* eslint-disable testing-library/no-node-access */
-/* eslint-disable testing-library/no-unnecessary-act */
-import { render } from "react-dom";
-import { fireEvent} from '@testing-library/react'
+import React from 'react';
+import { render, unmountComponentAtNode } from 'react-dom';
+import { fireEvent } from '@testing-library/react';
 
-import { InputUser } from '../../../src/types'
+import { act } from 'react-dom/test-utils';
 
 import { UserModal } from '../../../src/components/UserModal/UserModal';
-
-import { unmountComponentAtNode } from "react-dom";
-import { act } from 'react-dom/test-utils';
 
 let container: any = null;
 
 beforeEach(() => {
   // setup a DOM element as a render target
-  container = document.createElement("div");
+  container = document.createElement('div');
   document.body.appendChild(container);
 });
 
@@ -26,49 +22,55 @@ afterEach(() => {
 });
 
 describe('UserModal', () => {
+  function foo() {
+    // do nothing.
+  }
   it('should render component', () => {
     act(() => {
-      render(<UserModal  
-        inputUser={{name: '', color: ''}} 
-        createGame={(user: InputUser) => {}} 
-        joinByCode={ (user: InputUser) => {}} 
-        openLobbyList={(user: InputUser) => {}} />, container);
+      render(<UserModal
+        inputUser={{ name: '', color: '' }}
+        createGame={foo}
+        joinByCode={foo}
+        openLobbyList={foo}
+      />, container);
     });
-    
+
     expect(container).toMatchSnapshot();
-  })
+  });
 
   it('empty user', () => {
     act(() => {
-      render(<UserModal  
-        inputUser={{name: '', color: ''}} 
-        createGame={(user: InputUser) => {}} 
-        joinByCode={ (user: InputUser) => {}} 
-        openLobbyList={(user: InputUser) => {}} />, container);
+      render(<UserModal
+        inputUser={{ name: '', color: '' }}
+        createGame={foo}
+        joinByCode={foo}
+        openLobbyList={foo}
+      />, container);
     });
 
-    container.querySelector('#create-button').dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    container.querySelector('#join-button').dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    container.querySelector('#open-button').dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    
+    container.querySelector('#create-button').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    container.querySelector('#join-button').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    container.querySelector('#open-button').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
     expect(container).toMatchSnapshot();
-  })
+  });
 
   it('events', () => {
     act(() => {
-      render(<UserModal  
-        inputUser={{name: '', color: ''}} 
-        createGame={(user: InputUser) => {}} 
-        joinByCode={ (user: InputUser) => {}} 
-        openLobbyList={(user: InputUser) => {}} />, container);
+      render(<UserModal
+        inputUser={{ name: '', color: '' }}
+        createGame={foo}
+        joinByCode={foo}
+        openLobbyList={foo}
+      />, container);
     });
 
-    container.querySelector(["[id='create-button']"]).dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    container.querySelector(["[id='create-button']"]).dispatchEvent(new MouseEvent('click', { bubbles: true }));
     fireEvent.change(container.querySelector('#name'), { target: { value: 'name' } });
     fireEvent.change(container.querySelector('#color'), { target: { value: '#000000' } });
-    container.querySelector('#create-button').dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    container.querySelector('#join-button').dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    container.querySelector('#open-button').dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    container.querySelector('#create-button').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    container.querySelector('#join-button').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    container.querySelector('#open-button').dispatchEvent(new MouseEvent('click', { bubbles: true }));
     expect(container).toMatchSnapshot();
-  })
+  });
 });
