@@ -66,6 +66,6 @@ The default config is extended from:
 
 
 ## Gameplay preview
-<img width="529" alt="Screenshot 2023-06-06 at 20 09 37" src="https://github.com/dpalii/galacon-client/assets/47571050/7eaa9776-e101-4787-9107-e29575fd1269">
+<img width="529" alt="Screenshot 2023-06-06 at 20 09 37" src="https://github.com/dpalii/galcon-client/assets/47571050/7eaa9776-e101-4787-9107-e29575fd1269">
 
 A picture with the game for 2 players.
